@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+
+{% block content %}
+
+<div class="container-fluid py-5">
+	<div class="sticky-top d-flex flex-row flex-wrap justify-content-between align-items-center mb-2" style="background-color: #fff;">
+		<h1 contenteditable="true">Dashboard</h1>
+		<a href="{% url 'add' %}" role="button" class="btn btn-secondary">Add Book</a>
+	</div>
+	{% if books %}
+	<ul class="list-group">
+		{% for book in books %}
+		<li class="list-group-item">{{ forloop.counter }}. <a href="{% url 'detail' book.id %}">{{ book.name }}</a></li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	<div class="alert alert-warning" role="alert">No books</div>
+	{% endif %}
+</div>
+
+{% endblock %}
