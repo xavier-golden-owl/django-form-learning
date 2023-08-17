@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Chapter {{chapter.id}} | {{chapter.name}}{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+	<div class="sticky-top d-flex flex-row flex-wrap justify-content-between align-items-center mb-2 bg-white">
+		<h1>{{chapter.name}}</h1>
+		<a href="{% url 'detail' chapter.book.id %}" class="btn btn-secondary" role="button">Back</a>
+	</div>
+	<p>Abstract: {{chapter.abstract}}</p>
+	<p>Book: {{chapter.book.id}}</p>
+
+{% endblock %}

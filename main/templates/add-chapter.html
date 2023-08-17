@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Add Chapter{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+	<h1 class="sticky-top bg-white">Add Chapter to <mark>{{book.name}}</mark></h1>
+
+
+	<form action="{% url 'add-chapter' book.id %}" method="post" class="form-group">
+		{% csrf_token %}
+		{% for field in form %}
+			<div class="form-group">
+				<label for="{{ field.id_for_label }}">{{ field.label }}</label>
+				{{field}}
+			</div>
+		{% endfor %}
+		<input type="submit" class="btn btn-success mt-2 w-100" value="Add">
+	</form>
+</div>
+
+{% endblock %}
